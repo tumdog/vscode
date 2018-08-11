@@ -746,7 +746,19 @@ export class DefaultRecommendedExtensionsView extends ExtensionsListView {
 	async show(query: string): Promise<IPagedModel<IExtension>> {
 		return (query && query.trim() !== this.recommendedExtensionsQuery) ? this.showEmptyModel() : super.show(this.recommendedExtensionsQuery);
 	}
+}
 
+export class DefaultRecommendedInPopularExtensionsView extends DefaultRecommendedExtensionsView {
+	private readonly popularExtensionsQuery = '@sort:installs';
+
+	async show(query: string): Promise<IPagedModel<IExtension>> {
+		if ((query && query.trim() !== this.popularExtensionsQuery)) {
+			return this.showEmptyModel();
+		}
+		const model = await super.show('');
+		this.setExpanded(model.length > 0);
+		return model;
+	}
 }
 
 export class RecommendedExtensionsView extends ExtensionsListView {

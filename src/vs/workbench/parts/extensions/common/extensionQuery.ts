@@ -13,7 +13,7 @@ export class Query {
 	}
 
 	static suggestions(query: string): string[] {
-		const commands = ['installed', 'outdated', 'enabled', 'disabled', 'builtin', 'recommended', 'sort', 'category', 'tag', 'ext'];
+		const commands = ['installed', 'outdated', 'enabled', 'disabled', 'builtin', 'recommended', 'sort', 'category', 'tag', 'ext', 'popular'];
 		const subcommands = {
 			'sort': ['installs', 'rating', 'name'],
 			'category': ['"programming languages"', 'snippets', 'linters', 'themes', 'debuggers', 'formatters', 'keymaps', '"scm providers"', 'other', '"extension packs"', '"language packs"'],

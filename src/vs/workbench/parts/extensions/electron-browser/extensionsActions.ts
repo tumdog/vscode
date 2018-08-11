@@ -1549,6 +1549,7 @@ export class ShowPopularExtensionsAction extends Action {
 
 	static readonly ID = 'workbench.extensions.action.showPopularExtensions';
 	static LABEL = localize('showPopularExtensions', "Show Popular Extensions");
+	static readonly query = '@popular ';
 
 	constructor(
 		id: string,
@@ -1562,7 +1563,7 @@ export class ShowPopularExtensionsAction extends Action {
 		return this.viewletService.openViewlet(VIEWLET_ID, true)
 			.then(viewlet => viewlet as IExtensionsViewlet)
 			.then(viewlet => {
-				viewlet.search('@sort:installs ');
+				viewlet.search(ShowPopularExtensionsAction.query);
 				viewlet.focus();
 			});
 	}
